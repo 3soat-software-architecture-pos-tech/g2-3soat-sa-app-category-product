@@ -1,5 +1,5 @@
 import categoryRepositoryMySqlDB from '../categoryRepositoryMySqlDB.js';
-//import dbconnetion from '../../../../../config/dbConnectMysql.js';
+import connectDatabaseMySql from '../../../../../config/dbConnectMysql.js';
 // Import any necessary mock dependencies
 
 // Mocking the db dependency
@@ -32,9 +32,9 @@ jest.mock('../../../../../config/dbConnectMysql.js', () => ({
       const mockResult = { insertId: mockInsertId };
   
       // Mocking the behavior of db functions
-      require('../../../../config/dbConnectMysql').beginTransaction.mockImplementationOnce((callback) => callback());
-      require('../../../../config/dbConnectMysql').query.mockImplementationOnce((query, values, callback) => callback(null, mockResult));
-      require('../../../../config/dbConnectMysql').commit.mockImplementationOnce((callback) => callback());
+      connectDatabaseMySql.beginTransaction.mockImplementationOnce((callback) => callback());
+      connectDatabaseMySql.query.mockImplementationOnce((query, values, callback) => callback(null, mockResult));
+      connectDatabaseMySql.commit.mockImplementationOnce((callback) => callback());
   
       const result = await repository.add(categoryEntity);
   

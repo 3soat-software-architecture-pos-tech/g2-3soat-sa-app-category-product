@@ -1,1 +1,10 @@
 teste repo
+
+//npm install --save-dev @babel/plugin-syntax-import-attributes
+npm install  @babel/plugin-syntax-import-attribute
+
+{
+  "plugins": [
+    "@babel/plugin-syntax-import-attributes"
+  ]
+}

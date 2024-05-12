@@ -33,6 +33,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.9.2",
     "qrcode": "^1.5.3",
+    "supertest": "^7.0.0",
     "swagger-autogen": "^2.9.0",
     "swagger-ui-express": "^5.0.0"
   }

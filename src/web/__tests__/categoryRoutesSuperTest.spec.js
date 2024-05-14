@@ -1,69 +1,107 @@
-import express from 'express';
-import supertest from 'supertest';
-import categoryRoutes from '../categoryRoutes.js';
-import categoryController from '../../controllers/categoryController.js';
+import request from 'supertest';
+import {
+  describe, expect, it, jest,
+} from '@jest/globals';
+import app from '../../app.js';
+// Import and configure dotenv
+import dotenv from 'dotenv';
+dotenv.config();
+//import "dotenv";
+//import "../../config/dbConnectMysql.js"
 
-// Mock categoryController
-jest.mock('../controllers/categoryController.js', () => {
-  return jest.fn(() => ({
-    fetchAllCategory: jest.fn(),
-    fetchCategoryById: jest.fn(),
-    addNewCategory: jest.fn(),
-    updateCategoryById: jest.fn(),
-    deleteCategoryById: jest.fn(),
-  }));
+let server;
+
+/*beforeAll((done) => {
+  //server = app.listen(3000);
+  //const port = process.env.PORT || 3000;
+  server = app.listen(3000, (err) => {
+    if (err) return done(err);
+    done();
+  });
+});*/
+
+beforeEach(() => {
+  const port = 3000;
+  server = app.listen(port);
 });
 
-// Mock express Router
-const mockRouter = {
-  get: jest.fn(),
-  post: jest.fn(),
-  put: jest.fn(),
-  delete: jest.fn(),
-  route: jest.fn(() => mockRouter),
-};
+afterEach(() => {
+  server.close();
+});
+/*afterAll((done) => {
+  //server.close();
+  server.close((err) => {
+    if (err) return done(err);
+    done();
+  });
+});*/
 
-jest.mock('express', () => {
-  return {
-    Router: jest.fn(() => mockRouter),
-  };
+
+describe('GET em /categorias', () => {
+  console.log(process.env.DB_USER);
+  
+  it('Deve retornar uma lista de categorias', async () => {
+    const resposta = await request(app)
+      .get('/category')
+      .set('Accept', 'application/json')
+      .expect('content-type', /json/)
+      //.expect(200);
+    console.log(resposta.body);
+    expect(resposta.text).toEqual('{"message":"Sistema de pedidos"}');
+  });
+});
+/*
+let idResposta;
+describe('POST em /editoras', () => {
+  it('Deve adicionar uma nova editora', async () => {
+    const resposta = await request(app)
+      .post('/editoras')
+      .send({
+        nome: 'CDC',
+        cidade: 'Sao Paulo',
+        email: 's@s.com',
+      })
+      .expect(201);
+
+    idResposta = resposta.body.content.id;
+  });
+  it('Deve nao adicionar nada ao passar o body vazio', async () => {
+    await request(app)
+      .post('/editoras')
+      .send({})
+      .expect(400);
+  });
 });
 
-describe('Category Routes', () => {
-  let app;
-
-  beforeEach(() => {
-    app = express();
+describe('GET em /editoras/id', () => {
+  it('Deve retornar recurso selecionado', async () => {
+    await request(app)
+      .get(`/editoras/${idResposta}`)
+      .expect(200);
   });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('should define GET endpoint to list all categories', async () => {
-    categoryRoutes(express);
-    expect(mockRouter.get).toHaveBeenCalledWith('/', expect.any(Function));
-  });
-
-  it('should define GET endpoint to get category by ID', async () => {
-    categoryRoutes(express);
-    expect(mockRouter.get).toHaveBeenCalledWith('/:id', expect.any(Function));
-  });
-
-  it('should define POST endpoint to add category', async () => {
-    categoryRoutes(express);
-    expect(mockRouter.post).toHaveBeenCalledWith('/', expect.any(Function));
-  });
-
-  it('should define PUT endpoint to update category by ID', async () => {
-    categoryRoutes(express);
-    expect(mockRouter.put).toHaveBeenCalledWith('/:id', expect.any(Function));
-  });
-
-  it('should define DELETE endpoint to delete category by ID', async () => {
-    categoryRoutes(express);
-    expect(mockRouter.delete).toHaveBeenCalledWith('/:id', expect.any(Function));
-  });
-
-  // You can add more detailed tests for each endpoint if needed
 });
+
+describe('PUT em /editoras/id', () => {
+  test.each([
+    ['nome', { nome: 'Casa do Codigo' }],
+    ['cidade', { cidade: 'SP' }],
+    ['email', { email: 'cdc@cdc.com' }],
+  ])('Deve alterar o campo %s', async (chave, param) => {
+    const requisicao = { request };
+    const spy = jest.spyOn(requisicao, 'request');
+    await requisicao.request(app)
+      .put(`/editoras/${idResposta}`)
+      .send(param)
+      .expect(204);
+
+    expect(spy).toHaveBeenCalled();
+  });
+});
+
+describe('DELETE em /editoras/id', () => {
+  it('Deletar o recurso adcionado', async () => {
+    await request(app)
+      .delete(`/editoras/${idResposta}`)
+      .expect(200);
+  });
+});*/

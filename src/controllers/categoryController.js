@@ -23,14 +23,7 @@ export default function categoryController() {
       res.status(400).json(error.message);
       next(error);
     }
-    /*.then((category) => res.status(201).json(category))
-    .catch((error) => res.status(400).json('Category creation failed'));*/
-    //.catch((error) => res.status(400).json(next(`${error.message} - Category creation failed`)));
-    //.catch((error) => next(error));
-    /*.catch((error) => {
-        // Send error response with status code 400 and error message
-        res.status(400).json({ error: `${error.message} - Category creation failed` });
-    });*/
+    
   };
 
   const fetchCategoryById = async (req, res, next) => {

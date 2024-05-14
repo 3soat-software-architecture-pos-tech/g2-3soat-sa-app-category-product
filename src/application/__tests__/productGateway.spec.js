@@ -1,7 +1,7 @@
-import categoryGateway from '../categoryGateway.js';
-import categoryRepositoryMySqlDB from '../../db/database/mySql/repositories/categoryRepositoryMySqlDB.js';
+import productGateway from '../productGateway.js';
+import productRepositoryMySqlDB from '../../db/database/mySql/repositories/productRepositoryMySqlDB.js';
 
-jest.mock("../../db/database/mySql/repositories/categoryRepositoryMySqlDB.js", () => ({
+jest.mock("../../db/database/mySql/repositories/productRepositoryMySqlDB.js", () => ({
 	__esModule: true,
 	default: jest.fn().mockReturnValue({
 		findById: jest.fn(),
@@ -16,12 +16,12 @@ jest.mock("../../db/database/mySql/repositories/categoryRepositoryMySqlDB.js", (
 const id = 1;
 const status = { id: 1, statusName: "pending", description: "description" };
 
-describe("Category Gateway", () => {
+describe("Product Gateway", () => {
 	let gateway;
-	const database = categoryRepositoryMySqlDB();
+	const database = productRepositoryMySqlDB();
 
 	beforeEach(() => {
-		gateway = categoryGateway();
+		gateway = productGateway();
 	});
 
 	it('findById', () => {

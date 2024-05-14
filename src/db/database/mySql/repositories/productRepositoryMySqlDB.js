@@ -30,7 +30,7 @@ export default function productRepositoryMySqlDB() {
 						const category = productEntity.getCategory();
 						const quantity = productEntity.getQuantity();
 						const price = productEntity.getPrice();
-						return resolve({ "Product added ": insertId, "Product ": product, "Quantity": quantity, "Price": price, "Category ID": category });
+						return resolve({ "Product added ": insertId, "product ": product, "quantity": quantity, "price": price, "category": category });
 					});
 				});
 			});
@@ -93,7 +93,8 @@ export default function productRepositoryMySqlDB() {
 						}
 	
 						// Resolve with the query result
-						resolve(...result);
+						//resolve(...result);
+						resolve(result);
 					});
 				});
 			});
@@ -157,14 +158,14 @@ export default function productRepositoryMySqlDB() {
 						const quantity = productEntity.getQuantity();
 						const price = productEntity.getPrice();
 						const rowUpdate = result.affectedRows;
-						let retorno = "Category updated";
+						let retorno = "Product updated";
 	
 						if (rowUpdate === 0) {
 							retorno = "Product not found";
 							return resolve({ retorno, rowUpdate });
 						}
 	
-						return resolve({ response: retorno, rowUpdate, "Product ": nameProduct, "Quantity": quantity, "Price": price, "Category ID": category });
+						return resolve({ response: retorno, rowUpdate, "product": nameProduct, "quantity": quantity, "price": price, "category": category });
 					});
 				});
 			});

@@ -31,7 +31,7 @@ connectDatabaseMySql.connect()
 		//console.log(err)
 		console.log('Connection error');
 	} else {
-		console.log('conectado');
+		console.log('conectado bd');
 	}
 })*/
 

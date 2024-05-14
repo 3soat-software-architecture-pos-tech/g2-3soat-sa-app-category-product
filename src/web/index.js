@@ -14,7 +14,8 @@ export default function routes(app, express){
 	// v.2 automated payment
 
   //app.route("/").get((req, res) => res.status(200).send("Sistema de pedidos"));
-
+  /*app.route("/").get((req, res) => {
+    res.status(200).json({ message: "Sistema de pedidos" });});*/
   app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 }
 

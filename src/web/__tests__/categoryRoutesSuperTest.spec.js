@@ -1,7 +1,4 @@
 import request from 'supertest';
-import {
-  describe, expect, it, jest,
-} from '@jest/globals';
 import app from '../../app.js';
 // Import and configure dotenv
 import dotenv from 'dotenv';
@@ -39,7 +36,7 @@ afterEach(() => {
 
 describe('GET em /categorias', () => {
   console.log(process.env.DB_USER);
-  
+
   it('Deve retornar uma lista de categorias', async () => {
     const resposta = await request(app)
       .get('/category')

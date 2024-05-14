@@ -32,7 +32,7 @@ describe("Use Case Category", () => {
     const description = "Test Description";
     const createdAt = new Date();
     const updatedAt = new Date();
-    
+
     const mockCategory = { /* mock category object */ };
 
     // Mock category creation
@@ -47,7 +47,7 @@ describe("Use Case Category", () => {
 
     // Verify category creation was called with correct parameters
     expect(category).toHaveBeenCalledWith(categoryName, description, createdAt, updatedAt);
-    
+
     // Verify categoryGateway.add was called with the mock category object
     expect(mockAdd).toHaveBeenCalledWith(mockCategory);
   });
@@ -69,7 +69,7 @@ describe("Use Case Category", () => {
     const description = "Test Description";
     //const createdAt = new Date();
     const updatedAt = new Date();
-    
+
     const mockCategory = { categoryName, description, updatedAt };
 
     // Mock category creation
@@ -84,13 +84,13 @@ describe("Use Case Category", () => {
 
     // Verify category creation was called with correct parameters
     expect(category).toHaveBeenCalledWith(categoryName, description, updatedAt);
-    
+
     // Verify categoryGateway.add was called with the mock category object
     expect(categoryGateway().updateById).toHaveBeenCalledWith(id, mockCategory);
   });
   it("should call deleteById with the id", () => {
     const id = 1;
-    
+
     const mockCategory = { /* mock category object */ };
 
 
@@ -105,7 +105,7 @@ describe("Use Case Category", () => {
 
   it("should call find with the id", () => {
     const id = 1;
-    
+
     const mockCategory = { /* mock category object */ };
     //categoryGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock categoryGateway.add method
@@ -118,7 +118,7 @@ describe("Use Case Category", () => {
 
   it("should call get all categories", () => {
     const id = 1;
-    
+
     const mockCategory = { /* mock category object */ };
     //categoryGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock categoryGateway.add method

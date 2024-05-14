@@ -5,74 +5,74 @@ import useCasedelete from '../use_cases/category/deleteById.js'
 import useCaseUpdateById from '../use_cases/category/updateById.js';
 
 export default function categoryController() {
-  
-	const addNewCategory = async (req, res, next) => {
-    try{
-    const { categoryName, description } = req.body;
 
-    await useCaseCreate(
-			categoryName,
-      description,
-      Date(),
-      Date()
-    ).then((category) => {
-      res.status(201).json(category);
-    });//.catch((error) => res.status(400).json(error.message));
+  const addNewCategory = async (req, res, next) => {
+    try{
+      const { categoryName, description } = req.body;
+
+      await useCaseCreate(
+        categoryName,
+        description,
+        Date(),
+        Date()
+      ).then((category) => {
+        res.status(201).json(category);
+      });//.catch((error) => res.status(400).json(error.message));
       //; res.status(201).json(category);
     }catch(error){
       res.status(400).json(error.message);
       next(error);
     }
-    
+
   };
 
   const fetchCategoryById = async (req, res, next) => {
     try{
-    await useCaseFindById(req.params.id)
-      .then((category) => {
-       
-        if (!category || category.length === 0) {
-          res.status(400).json('No category found');
-        }else{
-          res.status(200).json(category);
-        }
-        
-      });}catch(error){
-        res.status(400).json(error.message);
-        next(error);
-      }
-      //.catch((error) => next(error));
+      await useCaseFindById(req.params.id)
+        .then((category) => {
+
+          if (!category || category.length === 0) {
+            res.status(400).json('No category found');
+          }else{
+            res.status(200).json(category);
+          }
+
+        });}catch(error){
+      res.status(400).json(error.message);
+      next(error);
+    }
+    //.catch((error) => next(error));
   };
 
   const fetchAllCategory = async (req, res, next) => {
-  try{
-   await useCasegetAll()
-      .then((category) => {
-        if (!category) {
-          res.status(400).json(`No category found`);
-        }
-        res.status(200).json(category);
-      })}catch(error){
-        res.status(400).json(error.message);
-        next(error);
-      }
-      //.catch((error) => res.status(400).json(next(`${error.message} - Category list failed`)));
-      //.catch((error) => next(error));
+    try{
+      await useCasegetAll()
+        .then((category) => {
+          if (!category) {
+            res.status(400).json(`No category found`);
+          }
+          res.status(200).json(category);
+        })}catch(error){
+      res.status(400).json(error.message);
+      next(error);
+    }
+    //.catch((error) => res.status(400).json(next(`${error.message} - Category list failed`)));
+    //.catch((error) => next(error));
   };
 
   const deleteCategoryById = async (req, res, next) => {
     try{
-   await useCasedelete(req.params.id)
+      await useCasedelete(req.params.id)
       /*.then(() => res.json('Category sucessfully deleted!'))
       .catch((error) => next(error));*/
-      .then((message) => {
-        const resultado = message.rowUpdate;
-        if (resultado === 0) {
+        .then((message) => {
+          const resultado = message.rowUpdate;
+          if (resultado === 0) {
             res.status(400).json('No category found');
-        }else{
-          res.status(200).json('Category deleted');
-        }
-    })
+          }else{
+            res.status(200).json('Category deleted');
+          }
+        })
     /*.then((message) => {
         // Send response
         res.status(204).json(message);
@@ -84,28 +84,28 @@ export default function categoryController() {
       next(error);
     }
   };
-  
-  const updateCategoryById  = async (req, res, next) => {
-    try{
-    const {categoryName, description} = req.body;
 
-   await useCaseUpdateById(
-      req.params.id,
-      categoryName,
-      description,
-      Date()
-    )
+  const updateCategoryById = async (req, res, next) => {
+    try{
+      const {categoryName, description} = req.body;
+
+      await useCaseUpdateById(
+        req.params.id,
+        categoryName,
+        description,
+        Date()
+      )
       /*.then((message) => (
         res.json(message)))
       .catch((error) => next(error));*/
-      .then((message) => { 
-        const resultado = message.rowUpdate;
-        if (resultado === 0) {
+        .then((message) => {
+          const resultado = message.rowUpdate;
+          if (resultado === 0) {
             res.status(400).json('No category found');
-        }else{
-          res.status(200).json('Category Updated');
-        }
-    });}catch(error){
+          }else{
+            res.status(200).json('Category Updated');
+          }
+        });}catch(error){
       res.status(400).json(error.message);
       next(error);
     }
@@ -117,9 +117,9 @@ export default function categoryController() {
     //.catch(next); // Pass any errors to the error handling middleware
     //.catch((error) => res.json(next(`${error.message} - Category updated failed`)));
   };
-  
+
   return {
-		addNewCategory,
+    addNewCategory,
     fetchAllCategory,
     fetchCategoryById,
     updateCategoryById,

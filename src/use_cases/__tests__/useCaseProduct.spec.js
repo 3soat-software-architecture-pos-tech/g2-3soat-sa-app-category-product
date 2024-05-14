@@ -34,7 +34,7 @@ describe("Use Case product", () => {
     const price = "10.00";
     const createdAt = new Date();
     const updatedAt = new Date();
-    
+
     const mockProduct = { /* mock product object */ };
 
     // Mock product creation
@@ -49,7 +49,7 @@ describe("Use Case product", () => {
 
     // Verify product creation was called with correct parameters
     expect(product).toHaveBeenCalledWith(productName, category, quantity, price, createdAt, updatedAt);
-    
+
     // Verify productGateway.add was called with the mock product object
     expect(mockAdd).toHaveBeenCalledWith(mockProduct);
   });
@@ -72,7 +72,7 @@ describe("Use Case product", () => {
     const price = "10.00";
     const quantity = "10";
     const updatedAt = new Date();
-    
+
     const mockProduct = { productName, category,price, quantity, updatedAt };
 
     // Mock product creation
@@ -87,13 +87,13 @@ describe("Use Case product", () => {
 
     // Verify product creation was called with correct parameters
     expect(product).toHaveBeenCalledWith(productName, category,price, quantity, updatedAt);
-    
+
     // Verify productGateway.add was called with the mock product object
     expect(productGateway().updateById).toHaveBeenCalledWith(id, mockProduct);
   });
   it("should call deleteById with the id", () => {
     const id = 1;
-    
+
     const mockProduct = { /* mock product object */ };
 
 
@@ -108,7 +108,7 @@ describe("Use Case product", () => {
 
   it("should call find with the id", () => {
     const id = 1;
-    
+
     const mockProduct = { /* mock product object */ };
     //productGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock productGateway.add method
@@ -121,7 +121,7 @@ describe("Use Case product", () => {
 
   it("should call get all categories", () => {
     const id = 1;
-    
+
     const mockProduct = { /* mock product object */ };
     //productGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock productGateway.add method

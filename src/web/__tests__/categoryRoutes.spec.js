@@ -27,12 +27,12 @@ describe("Category Routes", () => {
   });
 
   it("should create an Express router", () => {
-    
+
     expect(router).toBeDefined();
     expect(typeof router.get).toBe('function');
     //expect(router).toBeInstanceOf(express.Router);
   });
- 
+
   it("should define GET endpoints with the correct controller functions", () => {
     //controller.fetchAllCategory.mock.fetchAllCategory
     expect(router.stack[0].route.path).toBe("/");

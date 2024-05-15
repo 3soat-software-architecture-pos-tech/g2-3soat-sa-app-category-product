@@ -91,7 +91,7 @@ describe("Use Case Category", () => {
   it("should call deleteById with the id", () => {
     const id = 1;
 
-    const mockCategory = { /* mock category object */ };
+    //const mockCategory = { /* mock category object */ };
 
 
     //categoryGateway.mockReturnValue({ deleteById: mockAdd });
@@ -106,7 +106,7 @@ describe("Use Case Category", () => {
   it("should call find with the id", () => {
     const id = 1;
 
-    const mockCategory = { /* mock category object */ };
+    //const mockCategory = { /* mock category object */ };
     //categoryGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock categoryGateway.add method
     const mockFindById = jest.fn();
@@ -117,9 +117,9 @@ describe("Use Case Category", () => {
   });
 
   it("should call get all categories", () => {
-    const id = 1;
+    //const id = 1;
 
-    const mockCategory = { /* mock category object */ };
+    //const mockCategory = { /* mock category object */ };
     //categoryGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock categoryGateway.add method
     const mockFindAll = jest.fn();

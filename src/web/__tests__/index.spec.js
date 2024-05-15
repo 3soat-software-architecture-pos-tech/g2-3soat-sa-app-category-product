@@ -3,6 +3,7 @@ import express from "express";
 import routes from "../index.js";
 import categoryRoutes from "../categoryRoutes.js";
 import swaggerUI from 'swagger-ui-express';
+
 import swaggerFile from '../../../swagger-output.json' assert { type: "json" };
 import connectDatabaseMySql from '../../config/dbConnectMysql.js';
 

@@ -156,7 +156,6 @@ describe('categoryRepositoryMySqlDB', () => {
     });
 
     it('performs a rollback if db.query encounters an error during commit findAll', async () => {
-      const queryError = new Error('Query Error');
       const commitError = new Error('Commit Error');
 
       // Mocking the behavior of db functions
@@ -175,6 +174,7 @@ describe('categoryRepositoryMySqlDB', () => {
         await repository.findAll(); // Call the function under test
         // If findAll function doesn't throw an error, fail the test
         expect(true).toBe(false); // Fail the test if no error is thrown
+      // eslint-disable-next-line no-unused-vars
       } catch (error) {
         //expect(error).toBe(queryError); // Verify that the error thrown is the same as the one passed to reject()
         expect(connectDatabaseMySql.rollback).toHaveBeenCalled(); // Ensure db.rollback was called

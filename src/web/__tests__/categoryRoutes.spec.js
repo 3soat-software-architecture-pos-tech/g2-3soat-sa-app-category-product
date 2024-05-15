@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import express from "express";
 import categoryRoutes from "../categoryRoutes.js";
 import categoryController from "../../controllers/categoryController.js";

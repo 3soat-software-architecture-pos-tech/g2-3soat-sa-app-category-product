@@ -1,18 +1,21 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
-
+import jsdoc from 'eslint-plugin-jsdoc';
 
 export default [
-  {languageOptions: { globals: {...globals.browser, ...globals.node, ...globals.jest} }
-    ,rules: {
+  {languageOptions: { globals: {...globals.browser, ...globals.node, ...globals.jest} },
+    plugins: {
+      jsdoc,
+    },
+    rules: {
       "no-console": "off",
       "indent": ["error", 2],
       "no-trailing-spaces": "error",
       "no-multi-spaces": "error",
       "linebreak-style": ["error", "unix"],
       // "no-console": "off",
-      // "no-undef": "off",
-      // "no-unused-vars": "off",
+      "no-undef": "off",
+      "no-unused-vars": "off",
       // "no-constant-condition": "off",
       // "no-empty": "off",
       // "no-prototype-builtins": "off",
@@ -26,6 +29,6 @@ export default [
       // "no-unsafe-negation": "off",
       // "no-sparse-arrays": "off",
     }
-},
+  },
   pluginJs.configs.recommended,
 ];

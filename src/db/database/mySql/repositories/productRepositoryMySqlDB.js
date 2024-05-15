@@ -38,7 +38,7 @@ export default function productRepositoryMySqlDB() {
   };
 
 
-  const findAll = async (params) => {
+  const findAll = async () => {
     return new Promise((resolve, reject) => {
 
       // Begin transaction

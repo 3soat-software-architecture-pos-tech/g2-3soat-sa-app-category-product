@@ -93,10 +93,6 @@ describe("Use Case product", () => {
   });
   it("should call deleteById with the id", () => {
     const id = 1;
-
-    const mockProduct = { /* mock product object */ };
-
-
     //productGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock productGateway.add method
     const mockDelete = jest.fn();
@@ -109,7 +105,6 @@ describe("Use Case product", () => {
   it("should call find with the id", () => {
     const id = 1;
 
-    const mockProduct = { /* mock product object */ };
     //productGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock productGateway.add method
     const mockFindById = jest.fn();
@@ -120,9 +115,6 @@ describe("Use Case product", () => {
   });
 
   it("should call get all categories", () => {
-    const id = 1;
-
-    const mockProduct = { /* mock product object */ };
     //productGateway.mockReturnValue({ deleteById: mockAdd });
     // Mock productGateway.add method
     const mockFindAll = jest.fn();

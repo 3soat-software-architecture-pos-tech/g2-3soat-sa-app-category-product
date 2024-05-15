@@ -174,13 +174,6 @@ describe('product Controller', () => {
       const req = { params: { id: '1' }, body: { category: 'Updated product', Product: 'Updated Product' } };
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn().mockReturnThis() };
       const next = jest.fn();
-      const objetoProduct = {
-        id: '2',
-        category: 'CDC',
-        Product: '1',
-        createdAt: '2024-01-01 00:00',
-        updatedAt: '2024-01-01 00:00',
-      };
       useCaseUpdateById.mockResolvedValueOnce({ rowUpdate: 0 });
       await productController().updateProductById(req, res, next);
       expect(useCaseUpdateById).toHaveBeenCalledTimes(1);
@@ -247,13 +240,6 @@ describe('product Controller', () => {
       const req = { params: { id: '1' }, body: { product: 'Delete product', category: '1' } };
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn().mockReturnThis() };
       const next = jest.fn();
-      const objetoProduct = {
-        id: '2',
-        productName: 'CDC',
-        Product: '1',
-        createdAt: '2024-01-01 00:00',
-        updatedAt: '2024-01-01 00:00',
-      };
       useCasedelete.mockResolvedValueOnce({ rowUpdate: 0 });
       await productController().deleteProductById(req, res, next);
       expect(useCasedelete).toHaveBeenCalledTimes(1);

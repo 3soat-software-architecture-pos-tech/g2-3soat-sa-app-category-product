@@ -172,13 +172,13 @@ describe('Category Controller', () => {
       const req = { params: { id: '1' }, body: { categoryName: 'Updated Category', description: 'Updated Description' } };
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn().mockReturnThis() };
       const next = jest.fn();
-      const objetoCategory = {
+      /*const objetoCategory = {
         id: '2',
         categoryName: 'CDC',
         description: 'Sao Paulo',
         createdAt: '2024-01-01 00:00',
         updatedAt: '2024-01-01 00:00',
-      };
+      };*/
       useCaseUpdateById.mockResolvedValueOnce({ rowUpdate: 0 });
       await categoryController().updateCategoryById(req, res, next);
       expect(useCaseUpdateById).toHaveBeenCalledTimes(1);
@@ -245,13 +245,13 @@ describe('Category Controller', () => {
       const req = { params: { id: '1' }, body: { categoryName: 'Delete Category', description: 'Delete Description' } };
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn().mockReturnThis() };
       const next = jest.fn();
-      const objetoCategory = {
+      /*const objetoCategory = {
         id: '2',
         categoryName: 'CDC',
         description: 'Sao Paulo',
         createdAt: '2024-01-01 00:00',
         updatedAt: '2024-01-01 00:00',
-      };
+      };*/
       useCasedelete.mockResolvedValueOnce({ rowUpdate: 0 });
       await categoryController().deleteCategoryById(req, res, next);
       expect(useCasedelete).toHaveBeenCalledTimes(1);

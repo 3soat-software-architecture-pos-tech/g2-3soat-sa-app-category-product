@@ -8,6 +8,6 @@ node_modules
 .env.local
 .env
 # testing
-coverage/
-coverage/lcov-report/
-coverage/clover.xml
+#coverage/
+#coverage/lcov-report/
+#coverage/clover.xml

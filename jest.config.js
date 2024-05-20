@@ -1,5 +1,5 @@
 export default {
-	// collectCoverage: true,
+	collectCoverage: true,
   // coverageDirectory: './coverage',
 	// collectCoverageFrom: ["./src/**"], //['<rootDir>/**/__tests__/**/*.spec.js'],
   // testEnvironment: 'node',

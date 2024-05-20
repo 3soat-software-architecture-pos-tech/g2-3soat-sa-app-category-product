@@ -1,0 +1,24 @@
+teste repo
+
+//npm install --save-dev @babel/plugin-syntax-import-attributes
+npm install  @babel/plugin-syntax-import-attribute
+
+{
+  "plugins": [
+    "@babel/plugin-syntax-import-attributes"
+  ]
+}
+
+
+
+https://eslint.org/docs/latest/use/getting-started
+
+Instalar as dependencias no projeto
+`npm install eslint --save-dev`
+
+Configurar o eslint no projeto
+`npm init @eslint/config@latest`
+
+npx eslint src
+
+npx eslint src --fix

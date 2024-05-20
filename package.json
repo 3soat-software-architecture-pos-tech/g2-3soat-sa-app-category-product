@@ -1,0 +1,45 @@
+{
+  "name": "pos-tech-soat3-tech-challenge",
+  "version": "1.0.0",
+  "description": "### Turma: 3SOAT",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest --coverage --detectOpenHandles",
+    "test:watch": "jest --coverage --passWithNoTests --watchAll",
+    "test:coverage": "jest --coverage --passWithNoTests",
+    "dev": "nodemon server.js",
+    "doc": "node swagger.js",
+    "eslint": "npx eslint src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@eslint/js": "^9.2.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^9.2.0",
+    "eslint-plugin-jsdoc": "^48.2.4",
+    "globals": "^15.2.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "@webhooksite/cli": "^0.1.7",
+    "axios": "^1.6.7",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mercadopago": "^2.0.6",
+    "mongodb": "^6.3.0",
+    "mongoose": "^7.6.3",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.2",
+    "qrcode": "^1.5.3",
+    "supertest": "^7.0.0",
+    "swagger-autogen": "^2.9.0",
+    "swagger-ui-express": "^5.0.0"
+  }
+}

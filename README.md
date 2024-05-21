@@ -48,7 +48,7 @@ $ npm run test <caminho-do-teste>
 
 ### Desenho da arquitetura
 
-
+![TECH CHALLENGE-payment](https://github.com/3soat-software-architecture-pos-tech/g2-3soat-sa-app-category-product/assets/23316988/2b5a0e3c-f88b-4cd1-9d01-868dffae61be)
 
 ### Collection:
 

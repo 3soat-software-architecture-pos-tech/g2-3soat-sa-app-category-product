@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest --coverage --detectOpenHandles",
+    "test": "jest --coverage --passWithNoTests --detectOpenHandles",
     "test:watch": "jest --coverage --passWithNoTests --watchAll",
     "test:coverage": "jest --coverage --passWithNoTests",
     "dev": "nodemon server.js",

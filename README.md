@@ -2,35 +2,6 @@
 
 API Sistema de pedidos 'Totem de autoatendimento'
 
-## Setup
-
-Para configurar a aplicação em ambiente kubernetes, execute os seguintes comandos
-
-Deploy
-```bash
-$ kubectl apply -f deployment.yml
-$ kubectl apply -f hpa.yml
-$ kubectl apply -f service.yml
-```
-ou `make deploy`
-
-Se necessário, remover os recursos da infraestrutura
-```bash
-$ kubectl delete service app-service
-$ kubectl delete hpa app-hpa
-$ kubectl delete deployment app-deployment
-```
-ou `make undeploy`
-
-Se necessário, atualizar a imagem
-```bash
-$ docker build -t carlostofoli/tech-challenge-fase3:latest .
-$ docker login
-$ docker tag carlostofoli/tech-challenge-fase3:latest carlostofoli/tech-challenge-fase3:latest
-$ docker push carlostofoli/tech-challenge-fase3:latest
-```
-ou `make update-image`
-
 ### Setup testes
 
 Para rodar todos os testes localmente, você pode executar o comando
@@ -65,6 +36,9 @@ Nosso banco de dados já está populado, no entanto, caso deseje criar novos reg
 - Criar produto associado à categoria
 - Criar pedido associado à cliente e produto
 
+## Cobertura de teste evidências
+ - Jest 
+ <img width="914" alt="image" src="https://github.com/3soat-software-architecture-pos-tech/g2-3soat-sa-app-category-product/assets/57298002/cbbf89e5-6112-4791-aeb9-1697eb915aca">
 
 ## Team
  - Turma: 3SOAT

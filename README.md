@@ -31,13 +31,24 @@ $ docker push carlostofoli/tech-challenge-fase3:latest
 ```
 ou `make update-image`
 
+### Setup testes
+
+Para rodar todos os testes localmente, você pode executar o comando
+```bash
+$ npm run tests
+```
+
+Para rodar um teste específico, você pode executar o comando
+```bash
+$ npm run test <caminho-do-teste>
+```
 
 
-## Tech challenge Fase 2
+## Tech challenge Fase 4
 
 ### Desenho da arquitetura
 
-   ![tech_challenge_fase2](https://github.com/xCTbr/pos-tech-soat3-tech-challenge/assets/27281151/582c5bd6-6c49-43dd-8f38-5c96c3c8caec)
+
 
 ### Collection:
 

@@ -2,6 +2,24 @@
 
 API Sistema de pedidos 'Totem de autoatendimento'
 
+## Setup Local
+
+Para configurar a aplicação em ambiente local
+
+```bash
+$ npm install
+```
+
+Executar localmente
+```bash
+$ npm run dev
+```
+
+Gerar documentacao swagger
+```bash
+$ npm run docs
+```
+
 ### Setup testes
 
 Para rodar todos os testes localmente, você pode executar o comando

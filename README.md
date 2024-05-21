@@ -40,6 +40,14 @@ Nosso banco de dados já está populado, no entanto, caso deseje criar novos reg
  - Jest 
  <img width="914" alt="image" src="https://github.com/3soat-software-architecture-pos-tech/g2-3soat-sa-app-category-product/assets/57298002/cbbf89e5-6112-4791-aeb9-1697eb915aca">
 
+## Materias de Referência
+- Alura: [Node js testes unitários e de integração](https://cursos.alura.com.br/course/nodejs-testes-unitarios-integracao)
+- Alura: [Node js API Rest com Express e MongoDB](https://cursos.alura.com.br/course/nodejs-api-rest-express-mongodb)
+- Alura: [O que é Behavior-Driven Development (BDD)](https://cursos.alura.com.br/extra/alura-mais/o-que-e-behavior-driven-development-bdd--c284)
+- Jest: [Documentation](https://jestjs.io/)
+- ESLint : [Documentation](https://pt-br.eslint.org/)
+- Sonar Cloud: [Documentation](https://docs.sonarsource.com/sonarcloud/)
+
 ## Team
  - Turma: 3SOAT
  - Grupo: 2

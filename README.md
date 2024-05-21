@@ -35,7 +35,7 @@ ou `make update-image`
 
 Para rodar todos os testes localmente, você pode executar o comando
 ```bash
-$ npm run tests
+$ npm run test
 ```
 
 Para rodar um teste específico, você pode executar o comando

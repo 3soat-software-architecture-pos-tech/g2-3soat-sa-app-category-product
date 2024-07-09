@@ -20,15 +20,15 @@ const paramsMsg = {
     obs: 'pedido novo',
     productIds: [{
       id:1,
-      qtd:2
+      qtd:3
     }, {
       id:2,
-      qtd:103
+      qtd:1
     }]
   }),
-  QueueUrl: process.env.AWS_QUEUE_URL, // replace with your SQS queue URL
+  QueueUrl: process.env.AWS_QUEUE_URL_RESERVA_PRODUTO, // replace with your SQS queue URL
   MessageGroupId:'1',
-  MessageDeduplicationId:'3'
+  MessageDeduplicationId:'8'
 };
 sendMessage(paramsMsg);
 

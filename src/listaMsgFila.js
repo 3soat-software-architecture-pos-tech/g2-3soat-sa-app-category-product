@@ -158,7 +158,7 @@ export default async function receiveMessages (){
               } else {
                 console.log('Todos os produtos têm estoque.');
                 resultados.forEach(produtos => {
-                  updateEstoque(produtos.idproduto, produtos.quantity);
+                  updateEstoque(produtos.idproduto, produtos.qtd);
                 });
               }
               console.log('fim consultas!!!');
@@ -214,6 +214,7 @@ export async function updateEstoque(idproduto, qtd_solicitada) {
     let product = (response.data);
     console.log(product);
     //console.log(`Product ID: ${product.id}, Product Name: ${product.productName}, Quantity: ${product.quantity}`);
+    console.log('solicitada:',qtd_solicitada)
     if(product[0].quantity > qtd_solicitada){
     //if(product[0].quantity > qtd_solicitada){
       console.log(idproduto +': tem estoque');
@@ -221,8 +222,7 @@ export async function updateEstoque(idproduto, qtd_solicitada) {
       const putData = {
         productName: product[0].productName,
         category: product[0].category_id,
-        //quantity: product[0].quantity - qtd_solicitada,
-        quantity: qtd_solicitada,
+        quantity: product[0].quantity - qtd_solicitada,
         price: product[0].price
       };
       console.log('update data', putData);
@@ -283,7 +283,8 @@ export async function consultaProduto(idproduto, qtd_solicitada) {
       //ATUALIZA STATUS
       putData = {
         idproduto: idproduto,
-        quantity: product[0].quantity - qtd_solicitada,
+        //quantity: product[0].quantity - qtd_solicitada,
+        quantity: qtd_solicitada,
         temEstoque:1
       };
       //console.log( 'put data',putData);

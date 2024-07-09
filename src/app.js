@@ -28,7 +28,7 @@ const paramsMsg = {
   }),
   QueueUrl: process.env.AWS_QUEUE_URL_RESERVA_PRODUTO, // replace with your SQS queue URL
   MessageGroupId:'1',
-  MessageDeduplicationId:'8'
+  MessageDeduplicationId:'10'
 };
 sendMessage(paramsMsg);
 

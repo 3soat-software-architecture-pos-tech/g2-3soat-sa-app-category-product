@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 import { SQSClient, ReceiveMessageCommand, DeleteMessageCommand } from "@aws-sdk/client-sqs";
-import productController from "../src/controllers/productController.js";
+//import productController from "../src/controllers/productController.js";
+import sendMessage from "./addMsgToFila.js";
 import AWS from 'aws-sdk';
 import axios from 'axios';
 import { response } from "express";
@@ -154,12 +155,34 @@ export default async function receiveMessages (){
                 console.log('Existem produtos sem estoque.');
                 //POSTA NA FILA DE SEM ESTOQUE DO SERVICO DE ORDER DA BRUNA
                 //ID DA REQUEST E STATUS
+                const paramsMsgSemEstoque = {
+                  MessageBody: JSON.stringify({
+                    idorder: JSON.parse(message.Body).idorder,
+                    obs: 'Um ou mais produtos sem estoque'
+                  }),
+                  QueueUrl: process.env.AWS_QUEUE_URL_SEM_ESTOQUE_PRODUTO,
+                  MessageGroupId:'1',
+                  MessageDeduplicationId: JSON.parse(message.Body).idorder
+                };
+                sendMessage(paramsMsgSemEstoque);
 
               } else {
                 console.log('Todos os produtos têm estoque.');
                 resultados.forEach(produtos => {
                   updateEstoque(produtos.idproduto, produtos.qtd);
                 });
+                //POSTA NA FILA DE PRODUTOS RESERVADOS COM SUCESSO
+                const paramsMsgSemEstoque = {
+                  MessageBody: JSON.stringify({
+                    idorder: JSON.parse(message.Body).idorder,
+                    obs: 'Produtos reservados com sucesso'
+                  }),
+                  QueueUrl: process.env.AWS_QUEUE_URL_PRODUTOS_RESERVADOS,
+                  MessageGroupId:'1',
+                  MessageDeduplicationId: JSON.parse(message.Body).idorder
+                };
+                sendMessage(paramsMsgSemEstoque);
+
               }
               console.log('fim consultas!!!');
               // Aqui você pode continuar com outras operações após todas as consultas
@@ -173,7 +196,6 @@ export default async function receiveMessages (){
             QueueUrl: process.env.AWS_QUEUE_URL_RESERVA_PRODUTO,
             ReceiptHandle: message.ReceiptHandle,
           }).promise();
-
           console.log('Mensagem processada e deletada.');
 
         }

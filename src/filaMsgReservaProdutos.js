@@ -4,7 +4,7 @@ import { SQSClient, ReceiveMessageCommand, DeleteMessageCommand } from "@aws-sdk
 import sendMessage from "./addMsgToFila.js";
 import AWS from 'aws-sdk';
 import axios from 'axios';
-import { response } from "express";
+
 
 // Set up AWS credentials and region if not already configured
 
@@ -188,7 +188,7 @@ export default async function receiveMessages (){
               // Aqui você pode continuar com outras operações após todas as consultas
             })
             .catch(error => {
-              console.error('Erro ao processar consultas:', error);
+              console.error('Erro ao processar consultas de produtos para reserva:', error);
               // Tratar erros caso ocorram durante Promise.all
             });
           // Deletar a mensagem da fila
@@ -196,14 +196,14 @@ export default async function receiveMessages (){
             QueueUrl: process.env.AWS_QUEUE_URL_RESERVA_PRODUTO,
             ReceiptHandle: message.ReceiptHandle,
           }).promise();
-          console.log('Mensagem processada e deletada.');
+          console.log('Mensagem processada e deletada de produtos para reserva.');
 
         }
       } else {
-        console.log('Nenhuma mensagem disponível na fila.');
+        console.log('Nenhuma mensagem disponível na fila de produtos para reserva.');
       }
     } catch (err) {
-      console.error('Erro ao receber ou deletar mensagem:', err);
+      console.error('Erro ao receber ou deletar mensagem de produtos para reserva:', err);
     }
   }
 };

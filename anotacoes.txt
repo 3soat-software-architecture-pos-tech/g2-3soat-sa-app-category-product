@@ -50,10 +50,10 @@ da Bruna para solicitar pagamento*
 
 
 ----Filas----- (Publish -> Reader)
-reserva_produtos(Bruna -> Valdeir)
-devolve_produtos(Bruna -> Valdeir)
-produto_sem_estoque(Valdeir -> Bruna)
-produto_reservado(Valdeir -> Bruna)
+reserva_produtos(Bruna -> Valdeir) - ok
+devolve_produtos(Bruna -> Valdeir)-
+produto_sem_estoque(Valdeir -> Bruna) - ok codigo criar fila no sqs
+produto_reservado(Valdeir -> Bruna)  - ok codigo criar fila no sqs
 solicita_pagamento(Bruna -> Guilherme)
 pedido_status_pgto(Guilherme -> Bruna)
 notifica_cliente(Bruna -> Carlos)

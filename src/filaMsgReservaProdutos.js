@@ -32,63 +32,6 @@ const params = {
   WaitTimeSeconds: 3, // tempo de espera para novas mensagens (em segundos)
 };
 
-/*export default async function receiveMessages() {
-  try {
-    const data = await sqsClient.send(new ReceiveMessageCommand(params));
-
-    if (data.Messages) {
-      data.Messages.forEach(message => {
-        const orderToUpdate = message?.Body?.external_reference;
-
-        if (orderToUpdate) {
-          //updateStatusById(orderToUpdate, 'payment_received')
-          console.log(orderToUpdate);
-          console.log("leitura");
-          deleteMessage(message);
-          receiveMessages();
-        }
-      });
-    } else {
-      console.log("No messages available");
-      //---receiveMessages();
-    }
-  } catch (err) {
-    console.error("Error receiving messages:", err);
-  }
-}*/
-
-/*export default async function receiveMessages () {
-  try {
-    const data = await sqsClient.receiveMessage({
-      QueueUrl: QUEUE_URL,
-      MaxNumberOfMessages: 1, // máximo de 1 mensagem por vez
-      VisibilityTimeout: 10, // tempo para processar a mensagem (em segundos)
-      WaitTimeSeconds: 3, // tempo de espera para novas mensagens (em segundos)
-    }).promise();
-
-    if (!data.Messages) {
-      console.log('Nenhuma mensagem disponível na fila.');
-      return;
-    }
-
-    // Processar a mensagem
-    const message = data.Messages[0];
-    console.log('Mensagem recebida:', message);
-
-    // Aqui você processaria a mensagem conforme necessário
-
-    // Deletar a mensagem da fila
-    await sqsClient.deleteMessage({
-      QueueUrl: QUEUE_URL,
-      ReceiptHandle: message.ReceiptHandle,
-    }).promise();
-
-    console.log('Mensagem deletada com sucesso.');
-  } catch (err) {
-    console.error('Erro ao receber ou deletar mensagem:', err);
-  }
-};*/
-
 // Função para receber e processar mensagens continuamente
 //const receiveMessages = async () => {
 export default async function receiveMessages (){
@@ -107,21 +50,12 @@ export default async function receiveMessages (){
           console.log('Mensagem recebida:', message.Body);
           // Processar a mensagem conforme necessário
           let produtos_solicitados = [];
-          //updateEstoque();
-          // Using forEach method
-          //console.log(message.Body);
-          //CURSOR DO CONTEUDO DA MSG
-          // Array para armazenar os resultados das consultas
-          //let consultasPromises = [];
+
           JSON.parse(message.Body).productIds.forEach(produto => {
             //add produto solicitado, qtd e estoque status (1) tem (2)
             let consultaPromise =consultaProduto(produto.id, produto.qtd).then(retorno => {
               console.log('Resultado da consulta:', retorno);
-              /*produtos_solicitados.push({
-                idproduto: retorno.idproduto,
-                qtd: retorno.quantity,
-                temEstoque: retorno.temEstoque});*/
-              //console.log('array preenchido', produtos_solicitados)
+
               // Aqui você pode continuar com o uso de 'retorno'
               return {
                 idproduto: retorno.idproduto,
@@ -138,8 +72,6 @@ export default async function receiveMessages (){
                   temEstoque: 0 // ou outro valor que indique erro/falta de estoque
                 };
               });
-            //console.log('retorno: ',retorno);
-            //console.log('resultado:' + updateEstoque(produto.id, produto.qtd));
             // Adicionar a Promise ao array de Promises
             produtos_solicitados.push(consultaPromise);
           });
@@ -269,16 +201,8 @@ export async function updateEstoque(idproduto, qtd_solicitada) {
     if (error.response) {
       console.log(idproduto +': Não encontrado');
       resultado=0;
-      //console.log(error.response);
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      //console.error('Request failed with status code:', error.response.status);
-      //throw new Error(error.response.data.error || 'Something went wrong');
-    } /*else if (error.request) {
-      // The request was made but no response was received
-      console.error('Request made but no response received:', error.request);
-      throw new Error('No response received from server');
-    }*/ else {
+
+    } else {
       // Something happened in setting up the request that triggered an Error
       console.error('Error setting up the request:', error.message);
       //throw new Error('Failed to send request');

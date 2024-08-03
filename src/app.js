@@ -11,8 +11,8 @@ routes(app, express);
 
 
 // SQS processo de recebimento de mensagens
-receiveMessages();
-receiveMessagesDevolvidos();
+//--receiveMessages();
+//--receiveMessagesDevolvidos();
 //Send Message
 const paramsMsgReservaProdutos = {
   //MessageBody: 'Hello from Node.js!',
@@ -31,7 +31,7 @@ const paramsMsgReservaProdutos = {
   MessageGroupId:'1',
   MessageDeduplicationId:'11'
 };
-sendMessage(paramsMsgReservaProdutos);
+//--sendMessage(paramsMsgReservaProdutos);
 
 const paramsMsgDevolveProdutos = {
   //MessageBody: 'Hello from Node.js!',
@@ -50,6 +50,6 @@ const paramsMsgDevolveProdutos = {
   MessageGroupId:'1',
   MessageDeduplicationId:'1'
 };
-sendMessage(paramsMsgDevolveProdutos);
+//--sendMessage(paramsMsgDevolveProdutos);
 
 export default app;

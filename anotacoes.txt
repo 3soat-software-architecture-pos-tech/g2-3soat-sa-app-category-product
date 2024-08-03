@@ -58,4 +58,11 @@ solicita_pagamento(Bruna -> Guilherme)
 pedido_status_pgto(Guilherme -> Bruna)
 notifica_cliente(Bruna -> Carlos)
 
+--Rodar owasp zap 
+salvar relatorio
+fazer correções 
+
+
+// Remove o cabeçalho X-Powered-By
+app.disable('x-powered-by');
 

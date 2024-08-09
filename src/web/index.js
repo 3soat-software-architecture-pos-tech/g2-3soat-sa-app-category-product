@@ -19,7 +19,7 @@ app.use((req, res, next) => {
       useDefaults: true, // Utiliza políticas padrão do Helmet
       directives: {
         //defaultSrc: ["'none'"],
-        /*defaultSrc: ["'self'"], // Permite conteúdo somente da própria origem
+        defaultSrc: ["'self'"], // Permite conteúdo somente da própria origem
         scriptSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://trusted-scripts.com"],
         styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://trusted-styles.com"],
         //scriptSrc: ["'self'", "https://*.trusted-scripts.com"],
@@ -30,7 +30,7 @@ app.use((req, res, next) => {
         frameSrc: ["'self'", "https://trusted-frames.com"],
         //frameAncestors: ["'self'"], // Specify sources allowed to frame your content
         frameAncestors: ["'none'"], // Impede que sua página seja incorporada em um iframe
-        //formAction: ["'self'"],    // Specify sources allowed to submit forms*/
+        //formAction: ["'self'"],    // Specify sources allowed to submit forms
         defaultSrc: ["'none'"], // Setting default policy
         scriptSrc: ["'self'"], // Allow scripts from the same origin
         imgSrc: ["'self'", "https://example.com"], // Allow images from same origin and example.com
@@ -59,5 +59,8 @@ app.use((req, res, next) => {
   /*app.route("/").get((req, res) => {
     res.status(200).json({ message: "Sistema de pedidos" });});*/
   app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile));
+  app.use((req, res, next) => {
+    res.status(404).send('404 Not Found');
+  });
 }
 

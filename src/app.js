@@ -1,6 +1,6 @@
 import express from "express";
 import routes from "./web/index.js";
-import sendMessage from "./addMsgToFila.js";
+//import sendMessage from "./addMsgToFila.js";
 import receiveMessages from "./filaMsgReservaProdutos.js";
 import receiveMessagesDevolvidos from "./filaMsgDevolucao.js";
 
@@ -40,7 +40,7 @@ routes(app, express);
 receiveMessages();
 receiveMessagesDevolvidos();
 //Send Message
-const paramsMsgReservaProdutos = {
+/*const paramsMsgReservaProdutos = {
   //MessageBody: 'Hello from Node.js!',
   MessageBody: JSON.stringify({
     idorder: '98',
@@ -76,6 +76,6 @@ const paramsMsgDevolveProdutos = {
   MessageGroupId:'1',
   MessageDeduplicationId:'1'
 };
-sendMessage(paramsMsgDevolveProdutos);
+sendMessage(paramsMsgDevolveProdutos);*/
 
 export default app;

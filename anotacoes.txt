@@ -22,3 +22,47 @@ Configurar o eslint no projeto
 npx eslint src
 
 npx eslint src --fix
+
+
+---------------------------------
+
+ler mensagem, pegar os ids dos produtos e verificar se tem estoque para decrementar
+se tiver estoque e decrementar, postar na fila de pedidos para gerar pagamento
+
+*Após pedido feito Bruna posta na fila do Valdeir para reservar estoque
+
+*Se não tiver estoque postar na fila de pedidos 
+sem estoque e os produtos que foram atualizados devolver o estoque
+"Verificar os ids e guardar em um array a qtd em estoque, qtd solicitada e id do produto"
+
+*Caso um não tenha estoque adicionar na fila da Bruna de pedidos sem estoque*
+
+*Se tiver estoque todos os produtos adicionar na fila estoque reservado 
+da Bruna para solicitar pagamento*
+
+*Bruna atualiza status do pedido e posta na fila do Guilherme para gerar pagamento*
+
+*Apos pago posta na fila da Bruna de pedido pago/ em preparação* 
+*Se não for pago em 30 min postar na fila da Bruna de pedido cancelado por falta de pagamento
+*Bruna posta na fila Valdeir devolver estoque 
+
+*Após preparado postar na fila do Carlos para avisar o cliente*
+
+
+----Filas----- (Publish -> Reader)
+reserva_produtos(Bruna -> Valdeir) - ok
+devolve_produtos(Bruna -> Valdeir)-
+produto_sem_estoque(Valdeir -> Bruna) - ok codigo criar fila no sqs
+produto_reservado(Valdeir -> Bruna)  - ok codigo criar fila no sqs
+solicita_pagamento(Bruna -> Guilherme)
+pedido_status_pgto(Guilherme -> Bruna)
+notifica_cliente(Bruna -> Carlos)
+
+--Rodar owasp zap 
+salvar relatorio
+fazer correções 
+
+
+// Remove o cabeçalho X-Powered-By
+app.disable('x-powered-by');
+

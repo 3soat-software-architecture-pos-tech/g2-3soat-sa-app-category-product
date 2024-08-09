@@ -71,6 +71,8 @@ Nosso banco de dados já está populado, no entanto, caso deseje criar novos reg
 - Relatório Depois [Documentation](https://github.com/3soat-software-architecture-pos-tech/g2-3soat-sa-app-category-product/blob/main/ZAP%20Scanning%20Report%20-%20Solved.pdf)
 
 ## Materias de Referência
+- Oficina Dirigida ministrada pela Secretaria de Governo Digital - [Documentation](https://www.gov.br/governodigital/pt-br/privacidade_e_seguranca/apresentacoes/apresentacao_ripd.pdf) 
+- Perguntas e Resposta - [Documentation](https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/relatorio-de-impacto-a-protecao-de-dados-pessoais-ripd)
 - Alura: [Node js testes unitários e de integração](https://cursos.alura.com.br/course/nodejs-testes-unitarios-integracao)
 - Alura: [Node js API Rest com Express e MongoDB](https://cursos.alura.com.br/course/nodejs-api-rest-express-mongodb)
 - Alura: [O que é Behavior-Driven Development (BDD)](https://cursos.alura.com.br/extra/alura-mais/o-que-e-behavior-driven-development-bdd--c284)
